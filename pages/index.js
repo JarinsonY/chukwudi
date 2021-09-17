@@ -1,10 +1,12 @@
 import Head from 'next/head'
+import { useReducer } from 'react'
 import styled from 'styled-components'
 import Aside from '../components/Aside'
 import Banner from '../components/Banner'
 import Categories from '../components/Categories'
 import Header from '../components/Header'
 import Menu from '../components/Menu'
+import { cartInitialState, cartReducer } from '../reducers/cartReducer'
 
 const Container = styled.div`
     display: grid;
@@ -26,6 +28,11 @@ const AsideOrder = styled.div`
 `
 
 export default function Home() {
+
+  const [state, dispatch] = useReducer(cartReducer, cartInitialState)
+
+  const { products, cart } = state
+
   return (
     <>
       <Head>
@@ -36,10 +43,10 @@ export default function Home() {
         <Main>
           <Banner />
           <Categories />
-          <Menu />
+          <Menu products={products} dispatch={dispatch} />
         </Main>
         <AsideOrder>
-          <Aside />
+          <Aside dataCart={cart} dispatch={dispatch} />
         </AsideOrder>
       </Container>
     </>

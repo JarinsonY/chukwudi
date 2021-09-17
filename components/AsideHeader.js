@@ -49,7 +49,7 @@ const QuantityProducts = styled.a`
     font-weight: 500;
 `
 
-const AsideHeader = () => {
+const AsideHeader = ({ cart }) => {
 
     const [user, setUser] = useState(false)
 
@@ -72,7 +72,7 @@ const AsideHeader = () => {
                         </>
                 }
                 {/* <QuantityProducts>{props.count.length}</QuantityProducts> */}
-                <QuantityProducts>{0}</QuantityProducts>
+                <QuantityProducts>{cart.length}</QuantityProducts>
             </HeaderAside>
         </>
     )

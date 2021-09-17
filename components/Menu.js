@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react"
 import styled from "styled-components"
-import { getMenu } from "../services"
+import { TYPES } from "../actions/cartActions"
 import CardProduct from "./CardProduct"
 
 const DivMenu = styled.div`
@@ -11,14 +10,11 @@ const DivMenu = styled.div`
     grid-gap: 5%;
 `
 
-const Menu = () => {
+const Menu = ({ products, dispatch }) => {
 
-    const [products, setProducts] = useState([])
-
-    useEffect(() => {
-        getMenu()
-            .then(products => setProducts(products))
-    }, [])
+    const addToCart = (id) => {
+        dispatch({ type: TYPES.ADD_TO_CART, payload: id })
+    }
 
     return (
         <>
@@ -28,6 +24,7 @@ const Menu = () => {
                         <CardProduct
                             key={product.id}
                             data={product}
+                            addToCart={addToCart}
                         />
                     ))
                 }

@@ -24,10 +24,10 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 - [x] Create Header design
 - [x] Create Aside design
-- [ ] Create Body design
-- [ ] Implementing API with NextJS
-- [ ] Resposive Design
+- [x] Create Body design
+- [x] Implementing API with NextJS
 - [ ] Functionality: 'Add Cart'
+- [ ] Resposive Design
 - [ ] Create Login design
 - [ ] Implementing Login with Firebase
 

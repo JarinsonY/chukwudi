@@ -9,21 +9,21 @@ const Title = styled.h2`
     font-size: 33px;
     line-height: 2.4rem;
     width: 50%;
-` 
+`
 const DivTitle = styled.div`
     margin: 0 10% 0 15%;
 `
 
 
-const Aside = () => {
+const Aside = ({ dataCart, dispatch }) => {
     return (
         <>
-            <AsideHeader />
+            <AsideHeader cart={dataCart} />
             <DivTitle>
                 <Title>My  😎 Order</Title>
             </DivTitle>
             <AddressUser />
-            <Cart />
+            <Cart cart={dataCart} dispatch={dispatch} />
             <Checkout />
         </>
     )

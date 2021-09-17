@@ -41,7 +41,7 @@ const Total = styled.p`
 `
 
 
-const CartItem = ({ data }) => {
+const CartItem = ({ data, delFromCart }) => {
 
     const { id, name, price, image, quantity } = data;
 
@@ -52,7 +52,7 @@ const CartItem = ({ data }) => {
             <Cross />
             <NameProduct>{name}</NameProduct>
             <Total name={id} accessKey={id}>${price * quantity}</Total>
-            <MinusIcon />
+            <MinusIcon onClick={() => delFromCart(id)} />
         </Product>
 
     )

@@ -1,6 +1,7 @@
 import styled from "styled-components"
 import Trash from "./Icons/Trash"
 import CartItem from "./CartItem"
+import { TYPES } from "../actions/cartActions"
 
 const DivCart = styled.div`
     
@@ -40,10 +41,17 @@ const TotalCart = styled.p`
     font-weight: 700;
 `
 
-const Cart = () => {
+const Cart = ({ cart, dispatch }) => {
+
+    const delFromCart = (id) => {
+        dispatch({ type: TYPES.REMOVE_ONE_CART, payload: id })
+    }
+
+    const clearCart = () => {
+        dispatch({ type: TYPES.CLEAR_CART })
+    }
 
     let totalAmount = 0;
-    let cart = []
 
     return (
         <DivCart>
@@ -57,7 +65,7 @@ const Cart = () => {
                     ))
                 }
             </DivItems>
-            {cart.length > 0 && <DivTrash><TrashIcon /></DivTrash>}
+            {cart.length > 0 && <DivTrash><TrashIcon onClick={() => clearCart()} /></DivTrash>}
             <DivTotal>
                 <TotalTitle>Total:</TotalTitle>
                 <TotalCart>${totalAmount}</TotalCart>

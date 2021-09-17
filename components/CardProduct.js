@@ -69,7 +69,7 @@ const BtnAddCart = styled.button`
     }
 `
 
-const CardProduct = ({ data }) => {
+const CardProduct = ({ data, addToCart }) => {
 
     const { id, name, qualification, time, price, image } = data
 
@@ -81,10 +81,10 @@ const CardProduct = ({ data }) => {
             </DivImg>
             <NameProduct>{name}</NameProduct>
             <Rating>
-                <Score><Star />4.5</Score>
+                <Score><Star />{qualification}</Score>
                 <p>$ {price}</p>
             </Rating>
-            <BtnAddCart><CartIcon /></BtnAddCart>
+            <BtnAddCart onClick={() => addToCart(id)} id={id}><CartIcon /></BtnAddCart>
         </DivCard>
     )
 }
