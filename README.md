@@ -19,6 +19,11 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 
 ## Screens
 
+### Login
+![Chuckwudi](https://user-images.githubusercontent.com/19658821/133730823-7ffb70be-a613-4fe5-863d-3fa3547e59fe.png)
+
+### Home
+![Chuckwudi2](https://user-images.githubusercontent.com/19658821/133731076-383ad391-350d-4b42-a6cb-3db8c7bec605.png)
 
 ## Features
 
@@ -29,7 +34,7 @@ The `pages/api` directory is mapped to `/api/*`. Files in this directory are tre
 - [x] Functionality: 'Add Cart'
 - [x] Resposive Design
 - [x] Create Login design
-- [ ] Implementing Login with Firebase
+- [x] Implementing Login with Firebase
 
 ## Deploy
 
