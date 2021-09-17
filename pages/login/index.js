@@ -1,9 +1,13 @@
+import { useRouter } from 'next/dist/client/router'
 import Head from 'next/head'
 import Image from 'next/image'
+import { useEffect } from 'react'
 import styled from 'styled-components'
 import Facebook from '../../components/Icons/Facebook'
 import Github from '../../components/Icons/Github'
 import Google from '../../components/Icons/Google'
+import { signInFacebook, signInGithub, signInGoogle } from '../../firebase/client'
+import useUser, { USER_STATES } from '../../hooks/useUser'
 
 const Page = styled.div`
     font-family: 'Poppins', 'Roboto';
@@ -57,8 +61,9 @@ const Button = styled.button`
     text-transform: uppercase;
     border: 0;
     &:hover {
-        background-color: #4E4E4E;
         color: #FFF;
+        cursor: pointer;
+        background-color: #4E4E4E;
     }
 `
 const DataBtn = styled.div`
@@ -71,6 +76,24 @@ const LogoProvider = styled.span`
 `
 
 const Login = () => {
+    const user = useUser();
+    const router = useRouter();
+
+    useEffect(() => {
+        user && router.replace("/");
+    }, [user, router]);
+
+    const handleClickGoogle = () => {
+        signInGoogle()
+    }
+
+    const handleClickFacebook = () => {
+        signInFacebook()
+    }
+
+    const handleClickGitHub = () => {
+        signInGithub()
+    }
     return (
         <>
             <Head>
@@ -89,44 +112,51 @@ const Login = () => {
                         </Logo>
                         <Title>CHUKWUDI</Title>
                         <p>Iniciar <strong>Sesion</strong></p>
-                        <Options>
-                            <Button
-                                type="button"
-                                color="#fff"
-                                bcolor="#DA5C5C"
-                            >
-                                <DataBtn>
-                                    <LogoProvider>
-                                        <Google />
-                                    </LogoProvider>
-                                    | Google
-                                </DataBtn>
-                            </Button>
-                            <Button
-                                type="button"
-                                color="#fff"
-                                bcolor="#3b5998"
-                            >
-                                <DataBtn>
-                                    <LogoProvider>
-                                        <Facebook />
-                                    </LogoProvider>
-                                    | Facebook
-                                </DataBtn>
-                            </Button>
-                            <Button
-                                type="button"
-                                color="#fff"
-                                bcolor="#000"
-                            >
-                                <DataBtn>
-                                    <LogoProvider>
-                                        <Github />
-                                    </LogoProvider>
-                                    | GitHub
-                                </DataBtn>
-                            </Button>
-                        </Options>
+                        {
+                            user === USER_STATES.NOT_LOGGED &&
+                            <Options>
+                                <Button
+                                    type="button"
+                                    color="#fff"
+                                    bcolor="#DA5C5C"
+                                    onClick={handleClickGoogle}
+                                >
+                                    <DataBtn>
+                                        <LogoProvider>
+                                            <Google />
+                                        </LogoProvider>
+                                        | Google
+                                    </DataBtn>
+                                </Button>
+                                <Button
+                                    type="button"
+                                    color="#fff"
+                                    bcolor="#3b5998"
+                                    onClick={handleClickFacebook}
+                                >
+                                    <DataBtn>
+                                        <LogoProvider>
+                                            <Facebook />
+                                        </LogoProvider>
+                                        | Facebook
+                                    </DataBtn>
+                                </Button>
+                                <Button
+                                    type="button"
+                                    color="#fff"
+                                    bcolor="#000"
+                                    onClick={handleClickGitHub}
+                                >
+                                    <DataBtn>
+                                        <LogoProvider>
+                                            <Github />
+                                        </LogoProvider>
+                                        | GitHub
+                                    </DataBtn>
+                                </Button>
+                            </Options>
+                        }
+                        {user === USER_STATES.NOT_KNOWN && <span>Loading...</span>}
                     </Main>
                 </Container>
             </Page >

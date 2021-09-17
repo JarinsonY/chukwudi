@@ -2,8 +2,8 @@ import styled from "styled-components"
 import Image from 'next/image'
 import Link from "next/link"
 import ProfileImage from '../assets/images/headerimage.png'
-import { useState } from "react"
 import User from "./Icons/User"
+import useUser from "../hooks/useUser"
 
 const HeaderAside = styled.header`
     align-items: center;
@@ -19,7 +19,7 @@ const HeaderAside = styled.header`
     }
 `
 const ImageUser = styled(Image)`
-    border-radius: 20px;
+    border-radius: 10px;
 `
 const UserName = styled.h2`
     text-transform: capitalize;
@@ -56,7 +56,7 @@ const QuantityProducts = styled.a`
 
 const AsideHeader = ({ cart }) => {
 
-    const [user, setUser] = useState(false)
+    const user = useUser();
 
     return (
         <>
@@ -65,10 +65,8 @@ const AsideHeader = ({ cart }) => {
                     user
                         ?
                         <>
-                            {/* <ImageUser src={user.avatar} alt={user.username} width={45} height={45} />
-                            <UserName>{user.username}</UserName> */}
-                            <ImageUser src={ProfileImage} alt='Test' width={45} height={45} />
-                            <UserName>{User}</UserName>
+                            <ImageUser src={user.avatar ? user.avatar : ProfileImage} alt='Test' width={45} height={45} />
+                            <UserName>{user.displayName}</UserName>
                         </>
                         :
                         <>
@@ -76,7 +74,6 @@ const AsideHeader = ({ cart }) => {
                             <User />
                         </>
                 }
-                {/* <QuantityProducts>{props.count.length}</QuantityProducts> */}
                 <QuantityProducts>{cart.length}</QuantityProducts>
             </HeaderAside>
         </>
