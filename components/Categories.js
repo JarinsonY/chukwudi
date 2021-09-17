@@ -3,7 +3,7 @@ import Image from 'next/image'
 import HamburguerColor from "./Icons/HamburguerColor"
 import Clock from "./Icons/Clock"
 import { useEffect, useState } from "react"
-import ArrowHead from "./Icons/Arrowhead"
+import ArrowHead from "./Icons/ArrowHead"
 import { getCategories } from "../services"
 
 const DivCategories = styled.div`
