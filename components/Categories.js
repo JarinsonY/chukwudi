@@ -61,6 +61,11 @@ const ListCategories = styled.ol`
     /* justify-content: space-between; */
     list-style: none;
     padding: 0;
+    @media(max-width: 1180px) {
+        display: grid;
+        grid-template-columns: repeat(4,1fr);/* 
+        grid-template-rows: repeat(2,180px); */
+    }
 `
 const A = styled.a`
     align-items: center;

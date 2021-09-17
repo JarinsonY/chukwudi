@@ -54,7 +54,6 @@ const BtnCheckout = styled.button`
     }
 `
 
-
 const Checkout = () => {
 
     const [count, setCount] = useState(1)

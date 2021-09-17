@@ -5,7 +5,16 @@ import Search from "./Icons/Search"
 const HeaderApp = styled.header`
     align-items: center;
     display: grid;
+    padding: 0 1rem;
     grid-template-columns: 10% 30% 60%;
+    @media(max-width: 1180px) {
+        grid-template-columns: 10% 60% 40%;
+        text-align: center;
+    }
+    @media(max-width: 600px) {
+        display: block;
+        text-align: -webkit-center;
+    }
 `
 const TitlePage = styled.h2`
     margin: 0;
@@ -16,13 +25,16 @@ const DivInputSearch = styled.div`
     border-radius: 10px;
     display: flex;
     padding: 10px;
-    width: 80%;
+    width: 100%;
+    @media(max-width: 1180px) {
+        width: 70%;
+    }
 `
 const InputSearch = styled.input`
     background-color: #F9F8F9;
     border: none;
+    /* font-family: 'Poppins'; */
     margin-left: 15px;
-    outline: none;
 `
 
 const Header = () => {

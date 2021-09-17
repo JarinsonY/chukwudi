@@ -12,6 +12,11 @@ const HeaderAside = styled.header`
     justify-content: space-around;
     margin-top: 1rem;
     align-self: center;
+    @media(min-width: 1180px) {
+        margin: 1rem;
+        grid-template-columns: 10% 60% 40%;
+        text-align: center;
+    }
 `
 const ImageUser = styled(Image)`
     border-radius: 20px;

@@ -40,7 +40,6 @@ const Total = styled.p`
     color: #9A9A9A;
 `
 
-
 const CartItem = ({ data, delFromCart }) => {
 
     const { id, name, price, image, quantity } = data;

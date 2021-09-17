@@ -9,9 +9,15 @@ const Title = styled.h2`
     font-size: 33px;
     line-height: 2.4rem;
     width: 50%;
-`
+    @media(max-width: 1180px) {
+        width: 100%;
+    }
+` 
 const DivTitle = styled.div`
     margin: 0 10% 0 15%;
+    @media(max-width: 1180px) {
+        margin: 0 10%;
+    }
 `
 
 

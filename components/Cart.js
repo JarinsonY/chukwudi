@@ -33,6 +33,10 @@ const DivTotal = styled.div`
     padding-bottom: 2rem;
     border-bottom: 2px solid #E4E0E0;
     font-size: x-large;
+    @media(max-width: 1180px) {
+        padding-bottom: 0;
+        margin-bottom: 1rem;
+    }
 `
 const TotalTitle = styled.p`
 `
@@ -68,7 +72,7 @@ const Cart = ({ cart, dispatch }) => {
             {cart.length > 0 && <DivTrash><TrashIcon onClick={() => clearCart()} /></DivTrash>}
             <DivTotal>
                 <TotalTitle>Total:</TotalTitle>
-                <TotalCart>${totalAmount}</TotalCart>
+                <TotalCart>${totalAmount.toFixed(2)}</TotalCart>
             </DivTotal>
         </DivCart >
     )
