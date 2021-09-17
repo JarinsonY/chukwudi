@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import styled from 'styled-components'
+import Aside from '../components/Aside'
 import Header from '../components/Header'
 
 const Container = styled.div`
@@ -10,6 +11,12 @@ const Container = styled.div`
     padding: 1rem 0 1rem 3rem;
     font-family: 'Poppins', 'Roboto', sans-serif;
 `
+const AsideOrder = styled.div`
+    background-color: #FDFDFB;
+    grid-area: 1 / 2 / span 2;
+    grid-gap: 3%;
+    grid-template-rows: inherit;
+`
 
 export default function Home() {
   return (
@@ -19,6 +26,9 @@ export default function Home() {
       </Head>
       <Container>
         <Header />
+        <AsideOrder>
+          <Aside />
+        </AsideOrder>
       </Container>
     </>
   )
